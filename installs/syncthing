@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+#install syncthing and setup syncthing:
+sudo dnf5 install syncthing
+sudo systemctl start syncthing@$(whoami)
+systemctl --user is-enabled syncthing.service || sudo systemctl enable syncthing@$(whoami)
+

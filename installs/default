@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# default
+sudo dnf5 install git neovim polybar rofi tmux keepassxc btop gimp calibre fzf ripgrep keychain obs-studio
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
