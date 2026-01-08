@@ -100,5 +100,7 @@ systemctl --user is-enabled syncthing.service || sudo systemctl enable syncthing
 - clone this repo
 - run install scripts: 
     - installs/default
-    - installs/default
+    - installs/zsh
+    - installs/ghostty
+    - installs/font
 
