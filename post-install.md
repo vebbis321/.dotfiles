@@ -83,8 +83,22 @@ sudo dnf install -y openh264 gstreamer1-plugin-openh264 mozilla-openh264
 sudo dnf config-manager setopt fedora-cisco-openh264.enabled=1
 ```
 
-- run install.sh
+**get the dotfiles**
 - setup passwords directory
+
+```bash
+# install necessary programs
+sudo dnf install syncthing git keepassxc neovim
+
+# syncthing setup
+sudo systemctl start syncthing@$(whoami)
+systemctl --user is-enabled syncthing.service || sudo systemctl enable syncthing@$(whoami)
+```
+
 - setup keepassxc
 - setup ssh in git in the browser and in keepassxc
+- clone this repo
+- run install scripts: 
+    - installs/default
+    - installs/default
 
