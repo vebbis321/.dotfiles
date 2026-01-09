@@ -2,6 +2,6 @@
 
 # default
 sudo dnf5 install git neovim polybar rofi tmux keepassxc stow flameshot thunderbird \
-    picom btop gimp  calibre fzf ripgrep keychain obs-studio
+    picom btop gimp  calibre fzf ripgrep keychain obs-studio feh
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 

@@ -5,10 +5,13 @@ set $mod Mod4
 for_window [class="^.*"] border pixel 2
 
 # launch polybar 
-exec_always --no-startup-id "$HOME/.config/polybar/launch.sh"
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # for norwegian yes
 exec_always --no-startup-id setxkbmap -layout us -variant mac
+
+# wallpaper
+exec --no-startup-id feh --bg-scale $HOME/Pictures/wallpaper.png
 
 #picom
 exec_always --no-startup-id picom
