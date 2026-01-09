@@ -2,7 +2,7 @@ configuration {
     display-drun: "Applications:";
     display-window: "Windows:";
     drun-display-format: "{name}";
-    font: "Hack Nerd Font Medium 16";
+    font: "Hack Nerd Font Mono 25";
     modi: "window,run,drun";
 
     kb-row-up: "Up,Control+k,Shift+Tab,Shift+ISO_Left_Tab";
@@ -53,7 +53,7 @@ element-text {
 }
 
 element-icon {
-  size: 20;
+  size: 35;
   padding: 0 10 0 0;
   background-color: transparent;
 }
