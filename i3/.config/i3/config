@@ -13,9 +13,6 @@ exec_always --no-startup-id setxkbmap -layout us -variant mac
 #picom
 exec_always --no-startup-id picom
 
-# set wallpaper
-exec_always nitrogen --restore
-
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex-autostart --autostart --environment i3
@@ -27,9 +24,13 @@ exec --no-startup-id dex-autostart --autostart --environment i3
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
+# bluetooth
+exec --no-startup-id blueman-applet
+
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
+
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -38,6 +39,19 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer set Master 5%+ && ~/sc
 bindsym XF86AudioLowerVolume exec --no-startup-id "amixer set Master 5%- && ~/scripts/volume_notify.sh"
 bindsym XF86AudioMute exec --no-startup-id "amixer set Master toggle && ~/scripts/volume_notify.sh"
 
+# start ghostty
+bindsym $mod+space exec ghostty
+# bindsym $mod+Return exec --no-startup-id sh -lc 'ghostty >/tmp/ghostty.log 2>&1'
+
+
+# start rofi
+bindsym $mod+d exec rofi -show drun -show-icons
+
+# start vivaldi
+bindsym $mod+Shift+space exec vivaldi
+
+# kill focused window
+bindsym $mod+Shift+q kill
 
 # brightness
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
@@ -48,18 +62,6 @@ bindsym Print exec --no-startup-id flameshot gui
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
-
-# start wezterm
-bindsym $mod+space exec "flatpak run org.wezfurlong.wezterm"
-
-# start wezterm
-bindsym $mod+Shift+space exec brave-browser
-
-# kill focused window
-bindsym $mod+Shift+q kill
-
-# start rofi
-bindsym $mod+d exec rofi -show drun -show-icons
 
 # change focus
 bindsym $mod+h focus left
@@ -143,14 +145,13 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-# class                 border  bground text    indicator child_border
-client.focused          #B90E0A #B90E0A #FFFFFF #B90E0A   #B90E0A
-client.focused_inactive #8C8C8C #4C4C4C #FFFFFF #4C4C4C   #8C8C8C
-client.unfocused        #181616 #181616 #FFFFFF #181616   #181616 
-client.urgent           #EC69A0 #DB3279 #FFFFFF #DB3279   #DB3279
-client.placeholder      #000000 #0C0C0C #FFFFFF #000000   #0C0C0C
+# class                 border  backgr. text    indicator child_border
+client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
+client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
-client.background       #FFFFFF
-
-gaps inner 8
+client.background       #ffffff
+gaps inner 0
 gaps outer 0
