@@ -40,9 +40,8 @@ bindsym XF86AudioLowerVolume exec --no-startup-id "amixer set Master 5%- && ~/sc
 bindsym XF86AudioMute exec --no-startup-id "amixer set Master toggle && ~/scripts/volume_notify.sh"
 
 # start ghostty
-bindsym $mod+space exec ghostty
-# bindsym $mod+Return exec --no-startup-id sh -lc 'ghostty >/tmp/ghostty.log 2>&1'
-
+# bindsym $mod+space exec ghostty
+bindsym $mod+space exec --no-startup-id ~/.local/bin/ghostty +new-window
 
 # start rofi
 bindsym $mod+d exec rofi -show drun -show-icons
