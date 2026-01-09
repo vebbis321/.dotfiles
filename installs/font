@@ -6,3 +6,4 @@ unzip -d ~/.local/share/fonts ~/Downloads/Hack.zip
 fc-cache -fv
 rm ~/Downloads/Hack.zip
 
+sudo dnf5 install fontawesome-fonts-all

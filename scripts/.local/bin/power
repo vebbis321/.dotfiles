@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+actions=("suspend" "poweroff" "reboot")
+
+chosen=$(printf "%s\n" "${actions[@]}" | rofi -dmenu -p "Select action:")
+
+if [ -n "$chosen" ]; then
+    systemctl "$chosen"
+fi
