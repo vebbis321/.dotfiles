@@ -1,0 +1,156 @@
+# mod
+set $mod Mod4
+
+# border title is for losers
+for_window [class="^.*"] border pixel 2
+
+# launch polybar 
+exec_always --no-startup-id "$HOME/.config/polybar/launch.sh"
+
+# for norwegian yes
+exec_always --no-startup-id setxkbmap -layout us -variant mac
+
+#picom
+exec_always --no-startup-id picom
+
+# set wallpaper
+exec_always nitrogen --restore
+
+# Start XDG autostart .desktop files using dex. See also
+# https://wiki.archlinux.org/index.php/XDG_Autostart
+exec --no-startup-id dex-autostart --autostart --environment i3
+
+# The combination of xss-lock, nm-applet and pactl is a popular choice, so
+# they are included here as an example. Modify as you see fit.
+
+# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
+# screen before suspend. Use loginctl lock-session to lock your screen.
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+
+# NetworkManager is the most popular way to manage wireless networks on Linux,
+# and nm-applet is a desktop environment-independent system tray GUI for it.
+exec --no-startup-id nm-applet
+
+# Use pactl to adjust volume in PulseAudio.
+set $refresh_i3status killall -SIGUSR1 i3status
+
+bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer set Master 5%+ && ~/scripts/volume_notify.sh"
+bindsym XF86AudioLowerVolume exec --no-startup-id "amixer set Master 5%- && ~/scripts/volume_notify.sh"
+bindsym XF86AudioMute exec --no-startup-id "amixer set Master toggle && ~/scripts/volume_notify.sh"
+
+
+# brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
+
+# printscreen
+bindsym Print exec --no-startup-id flameshot gui
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start wezterm
+bindsym $mod+space exec "flatpak run org.wezfurlong.wezterm"
+
+# start wezterm
+bindsym $mod+Shift+space exec brave-browser
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# start rofi
+bindsym $mod+d exec rofi -show drun -show-icons
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+bindsym $mod+f fullscreen toggle
+
+# monitor
+set $monitor1 "DisplayPort-2"
+set $monitor2 "HDMI-A-2"
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+workspace 0 output $monitor1
+workspace 1 output $monitor2
+workspace 2 output $monitor2
+workspace 3 output $monitor2
+workspace 4 output $monitor2
+workspace 5 output $monitor2
+workspace 6 output $monitor2
+workspace 7 output $monitor2
+workspace 8 output $monitor2
+workspace 9 output $monitor2
+
+# switch to workspace
+bindsym $mod+0 workspace number 0
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+
+# move focused container to workspace
+bindsym $mod+Shift+0 move container to workspace number 0
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# resize window (you can also use the mouse for that)
+bindsym $mod+r mode "resize"
+set $resize_delta 10
+
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        bindsym h exec "i3-msg resize grow left $resize_delta px or $resize_delta ppt || i3-msg resize shrink right $resize_delta px or $resize_delta ppt"
+        bindsym l exec "i3-msg resize grow right $resize_delta px or $resize_delta ppt || i3-msg resize shrink left $resize_delta px or $resize_delta ppt"
+        bindsym j exec "i3-msg resize grow down $resize_delta px or $resize_delta ppt || i3-msg resize shrink up $resize_delta px or $resize_delta ppt"
+        bindsym k exec "i3-msg resize grow up $resize_delta px or $resize_delta ppt || i3-msg resize shrink down $resize_delta px or $resize_delta ppt"
+
+        bindsym Left exec "i3-msg resize grow left $resize_delta px or $resize_delta ppt || i3-msg resize shrink right $resize_delta px or $resize_delta ppt"
+        bindsym Right exec "i3-msg resize grow right $resize_delta px or $resize_delta ppt || i3-msg resize shrink left $resize_delta px or $resize_delta ppt"
+        bindsym Up exec "i3-msg resize grow up $resize_delta px or $resize_delta ppt || i3-msg resize shrink down $resize_delta px or $resize_delta ppt"
+        bindsym Down exec "i3-msg resize grow down $resize_delta px or $resize_delta ppt || i3-msg resize shrink up $resize_delta px or $resize_delta ppt"
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+# class                 border  bground text    indicator child_border
+client.focused          #B90E0A #B90E0A #FFFFFF #B90E0A   #B90E0A
+client.focused_inactive #8C8C8C #4C4C4C #FFFFFF #4C4C4C   #8C8C8C
+client.unfocused        #181616 #181616 #FFFFFF #181616   #181616 
+client.urgent           #EC69A0 #DB3279 #FFFFFF #DB3279   #DB3279
+client.placeholder      #000000 #0C0C0C #FFFFFF #000000   #0C0C0C
+
+client.background       #FFFFFF
+
+gaps inner 8
+gaps outer 0
