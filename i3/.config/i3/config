@@ -4,6 +4,9 @@ set $mod Mod4
 # border title is for losers
 for_window [class="^.*"] border pixel 2
 
+# monitor
+exec_always --no-startup-id xrandr --output HDMI-1-0 --primary --mode 1920x1080 --rate 60 --pos 0x0 --output eDP --off
+
 # launch polybar 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
@@ -84,7 +87,7 @@ bindsym $mod+f fullscreen toggle
 
 # monitor
 set $monitor1 "DisplayPort-2"
-set $monitor2 "HDMI-A-2"
+set $monitor2 "HDMI-1-0"
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
