@@ -5,7 +5,7 @@ set $mod Mod4
 for_window [class="^.*"] border pixel 2
 
 # monitor
-exec_always --no-startup-id xrandr --output HDMI-1-0 --primary --mode 1920x1080 --rate 60 --pos 0x0 --output eDP --off
+exec --no-startup-id autorandr --change
 
 # launch polybar 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
