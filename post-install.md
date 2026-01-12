@@ -29,14 +29,7 @@ sudo dnf group upgrade core
 https://github.com/Comprehensive-Wall28/Nvidia-Fedora-Guide?tab=readme-ov-file#encrypted-drives
 
 # fix sleep
-sudo vi /etc/systemd/logind.conf
-
-# add
-HandleLidSwitch=ignore  # If it's a laptop
-HandlePowerKey=ignore
-IdleAction=ignore
-IdleActionSec=0
-sudo systemctl restart systemd-logind
+sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
 
 # fix ssh
 sudo vi /etc/ssh/sshd_config
