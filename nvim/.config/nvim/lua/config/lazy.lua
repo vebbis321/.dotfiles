@@ -17,6 +17,9 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Setup lazy.nvim
 require("lazy").setup({
+	enabled = true, -- Automatically check for updates
+	notify = true, -- Get a notification when new updates are found
+	frequency = 3600, -- Check every hour (3600 seconds)
 	spec = "config.plugins",
 	change_detection = { notify = false },
 	checker = { enabled = false },
