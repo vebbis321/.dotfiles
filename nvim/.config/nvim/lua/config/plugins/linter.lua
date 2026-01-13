@@ -1,6 +1,6 @@
 return {
 	"mfussenegger/nvim-lint",
-	enabled = false,
+	enabled = true,
 	lazy = true,
 	event = {
 		"BufReadPre",
