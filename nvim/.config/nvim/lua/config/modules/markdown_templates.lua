@@ -29,10 +29,10 @@ local seperation = "\n\n"
 local diary = function()
 	local date = os.date("%Y-%m-%d")
 	local header = "# " .. date
-	local physics = "## Physics:"
-	local maths = "## Math:"
-	local programming = "## Programming:"
-	return header .. seperation .. physics .. seperation .. maths .. seperation .. programming
+	local course_1 = "## Physics:"
+	local course_2 = "## Math:"
+	local course_3 = "## Statistics:"
+	return header .. seperation .. course_1 .. seperation .. course_2 .. seperation .. course_3
 end
 
 local today_config = {
