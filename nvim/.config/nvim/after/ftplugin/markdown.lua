@@ -1,6 +1,6 @@
 local opt = vim.opt
 opt.spell = true
-opt.spelllang = { "en_us" }
+opt.spelllang = { "en_us", "nb" }
 opt.linebreak = true
 -- opt.colorcolumn = "70"
 -- opt.textwidth = 68

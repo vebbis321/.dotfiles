@@ -3,7 +3,7 @@ set $mod Mod4
 
 # border title is for losers
 for_window [class="^.*"] border pixel 2
-for_window [class="Matplotlib"] floating enable, resize set 400 300, move position 540 200
+for_window [class="Matplotlib"] floating enable, resize set 500 400, move position 440 100
 
 # monitor
 exec --no-startup-id autorandr --change

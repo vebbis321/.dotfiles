@@ -13,6 +13,7 @@ opt.smartindent = true
 
 -- line wrapping
 opt.wrap = true
+opt.linebreak = true
 
 -- search opttings
 opt.hlsearch = false
@@ -34,9 +35,9 @@ opt.backspace = "indent,eol,start"
 
 -- appearance
 opt.termguicolors = true
-opt.signcolumn = "yes"
-opt.colorcolumn = "100"
-opt.textwidth = 98
+-- opt.signcolumn = "yes"
+-- opt.colorcolumn = "100"
+-- opt.textwidth = 98
 opt.cursorline = true
 opt.background = "dark"
 
