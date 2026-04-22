@@ -15,7 +15,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id setxkbmap -layout us -variant mac
 
 # wallpaper
-exec_always --no-startup-id feh --bg-scale $HOME/Pictures/wallpaper.png
+exec_always --no-startup-id feh --bg-scale /usr/share/backgrounds/default-dark.jxl
 
 # picom
 exec_always --no-startup-id picom
@@ -46,8 +46,8 @@ exec --no-startup-id nm-applet
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 
-bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer set Master 5%+ && ~/scripts/volume_notify.sh"
-bindsym XF86AudioLowerVolume exec --no-startup-id "amixer set Master 5%- && ~/scripts/volume_notify.sh"
+bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer set Master 2%+ && ~/scripts/volume_notify.sh"
+bindsym XF86AudioLowerVolume exec --no-startup-id "amixer set Master 2%- && ~/scripts/volume_notify.sh"
 bindsym XF86AudioMute exec --no-startup-id "amixer set Master toggle && ~/scripts/volume_notify.sh"
 
 # start ghostty
@@ -64,8 +64,8 @@ bindsym $mod+Shift+space exec vivaldi
 bindsym $mod+Shift+q kill
 
 # brightness
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +2%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 2%-
 
 # printscreen
 bindsym Print exec --no-startup-id flameshot gui
