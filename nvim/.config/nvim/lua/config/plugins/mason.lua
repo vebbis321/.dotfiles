@@ -11,6 +11,8 @@ return {
 			ensure_installed = {
 				"lua_ls",
 				"basedpyright",
+				"marksman",
+				"texlab",
 			},
 		})
 		require("mason-tool-installer").setup({
