@@ -4,4 +4,4 @@ opt.spelllang = { "en_us", "nb" }
 opt.linebreak = true
 -- opt.colorcolumn = "70"
 -- opt.textwidth = 68
--- opt.conceallevel = 2
+opt.conceallevel = 2

@@ -11,6 +11,9 @@ opt.softtabstop = 4
 opt.expandtab = true
 opt.smartindent = true
 
+-- latex
+opt.conceallevel = 2
+
 -- line wrapping
 opt.wrap = true
 opt.linebreak = true
