@@ -1,0 +1,212 @@
+# Logo key. Use Mod1 for Alt.
+set $mod Mod4
+set $left h
+set $down j
+set $up k
+set $right l
+
+# Your preferred application launcher
+# Note: pass the final command to swaymsg so that the resulting window can be opened
+# on the original workspace that the command was run on.
+# Recommends: rofi-wayland
+set $rofi_cmd rofi \
+        -terminal '$term'
+
+# Shows a combined list of the applications with desktop files and
+# executables from PATH.
+# TODO: add window with the next release of rofi-wayland
+set $menu $rofi_cmd -show drun -show-icons
+
+# background
+# output * bg "$HOME/Pictures/wallpaper.png" fill
+output * bg /usr/share/backgrounds/default.jxl fill
+
+# Set timeouts in seconds for clarity
+set $lock_timeout 3600        # 1 hour
+set $power_off_timeout 3605   # 1 hour and 5 seconds
+
+exec swayidle -w \
+     timeout $lock_timeout 'swaylock -f' \
+     timeout $power_off_timeout 'swaymsg "output * power off"' \
+          resume 'swaymsg "output * power on"' \
+     before-sleep 'swaylock -f'
+
+### Input configuration
+input "type:keyboard" {
+    xkb_layout us
+    xkb_variant mac
+}
+
+### Output configuration
+
+
+### Autostart applications
+
+# always use wayland
+exec_always {
+    export XDG_SESSION_TYPE=wayland
+    export GDK_BACKEND=wayland
+    export QT_QPA_PLATFORM=wayland
+    export SDL_VIDEODRIVER=wayland
+    export MOZ_ENABLE_WAYLAND=1
+    export OZONE_PLATFORM=wayland
+    export NIXOS_OZONE_WL=1
+}
+
+# kanshi
+exec_always "pkill kanshi; kanshi"
+
+### Key bindings
+#
+# Basics:
+#
+# Start a terminal
+# bindsym $mod+space exec $term
+bindsym $mod+space exec bash -c 'gtk-launch com.mitchellh.ghostty.desktop || ~/.local/bin/ghostty'
+
+# firefox
+bindsym $mod+Shift+space exec firefox
+
+# Kill focused window
+bindsym $mod+Shift+q kill
+
+# rofi
+bindsym $mod+d exec $menu
+
+# printscreen
+bindsym Print exec grimshot copy area
+
+# Drag floating windows by holding down $mod and left mouse button.
+# Resize them with right mouse button + $mod.
+# Despite the name, also works for non-floating windows.
+# Change normal to inverse to use left mouse button for resizing and right
+# mouse button for dragging.
+floating_modifier $mod normal
+
+# Reload the configuration file
+bindsym $mod+Shift+r reload
+
+# Exit sway (logs you out of your Wayland session)
+bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+#
+# Moving around:
+#
+# Move your focus around
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+# Or use $mod+[up|down|left|right]
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move the focused window with the same, but add Shift
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+# Ditto, with arrow keys
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Workspaces:
+#
+# Send workspace 1 to the laptop screen
+workspace 0 output eDP-1
+
+# Send workspaces 2 through 9 to the external monitor
+workspace 1 output HDMI-A-1
+workspace 2 output HDMI-A-1
+workspace 3 output HDMI-A-1
+workspace 4 output HDMI-A-1
+workspace 5 output HDMI-A-1
+workspace 6 output HDMI-A-1
+workspace 7 output HDMI-A-1
+workspace 8 output HDMI-A-1
+workspace 9 output HDMI-A-1
+
+# Switch to workspace
+bindsym $mod+0 workspace number 0
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+# Move focused container to workspace
+bindsym $mod+Shift+0 move container to workspace number 0
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+
+# Layout stuff:
+#
+
+# Make the current focus fullscreen
+bindsym $mod+f fullscreen
+
+# Toggle the current focus between tiling and floating mode
+bindsym $mod+Shift+t floating toggle
+
+# Swap focus between the tiling area and the floating area
+bindsym $mod+t focus mode_toggle
+
+# Move focus to the parent container
+bindsym $mod+a focus parent
+
+# Resizing containers:
+#
+mode "resize" {
+
+    # Dynamic resize
+    bindsym $left exec "swaymsg resize grow left 10px || swaymsg resize shrink right 10px"
+    bindsym $right exec "swaymsg resize grow right 10px || swaymsg resize shrink left 10px"
+    bindsym $up exec "swaymsg resize grow up 10px || swaymsg resize shrink down 10px"
+    bindsym $down exec "swaymsg resize grow down 10px || swaymsg resize shrink up 10px"
+
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# Appearance:
+
+# Configure the default border:
+default_border pixel 2
+
+# Include configs from 3 locations:
+#  - /usr/share/sway/config.d
+#  - /etc/sway/config.d
+#  - $XDG_CONFIG_HOME/sway/config.d ($HOME/.config/sway/config.d)
+include '$(/usr/libexec/sway/layered-include "/etc/sway/config.d/*.conf" "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'
+
+# now we can decide what we want from the fedora spin and what we don't want
+# this is all the files from: usr/share/sway/config.d/*.conf
+include "/usr/share/sway/config.d/50-rules-browser.conf"
+include "/usr/share/sway/config.d/50-rules-pavucontrol.conf"
+include "/usr/share/sway/config.d/50-rules-policykit-agent.conf"
+include "/usr/share/sway/config.d/60-bindings-brightness.conf"
+include "/usr/share/sway/config.d/60-bindings-media.conf"
+# include "/usr/share/sway/config.d/60-bindings-screenshot.conf"
+include "/usr/share/sway/config.d/60-bindings-volume.conf"
+include "/usr/share/sway/config.d/65-mode-passthrough.conf"
+include "/usr/share/sway/config.d/90-bar.conf"
+# include "/usr/share/sway/config.d/90-swayidle.conf"
+include "/usr/share/sway/config.d/95-autostart-policykit-agent.conf"
+include "/usr/share/sway/config.d/95-xdg-desktop-autostart.conf"
+include "/usr/share/sway/config.d/95-xdg-user-dirs.conf"
