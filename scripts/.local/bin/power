@@ -5,5 +5,9 @@ actions=("suspend" "poweroff" "reboot")
 chosen=$(printf "%s\n" "${actions[@]}" | rofi -dmenu -p "Select action:")
 
 if [ -n "$chosen" ]; then
-    systemctl "$chosen"
+    if [ "$chosen" == "suspend" ]; then
+        swaylock & systemctl suspend
+    else
+        systemctl "$chosen"
+    fi
 fi

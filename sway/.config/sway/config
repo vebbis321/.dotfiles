@@ -13,12 +13,9 @@ set $rofi_cmd rofi \
         -terminal '$term'
 
 # Shows a combined list of the applications with desktop files and
-# executables from PATH.
-# TODO: add window with the next release of rofi-wayland
 set $menu $rofi_cmd -show drun -show-icons
 
 # background
-# output * bg "$HOME/Pictures/wallpaper.png" fill
 output * bg /usr/share/backgrounds/default.jxl fill
 
 # Set timeouts in seconds for clarity
@@ -65,7 +62,7 @@ exec_always "pkill kanshi; kanshi"
 bindsym $mod+space exec bash -c 'gtk-launch com.mitchellh.ghostty.desktop || ~/.local/bin/ghostty'
 
 # firefox
-bindsym $mod+Shift+space exec firefox
+bindsym $mod+Shift+space exec vivaldi
 
 # Kill focused window
 bindsym $mod+Shift+q kill
