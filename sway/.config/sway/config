@@ -113,7 +113,7 @@ bindsym $mod+Shift+Right move right
 # Workspaces:
 #
 # Send workspace 1 to the laptop screen
-workspace 0 output eDP-1
+workspace 0 output HDMI-A-2
 
 # Send workspaces 2 through 9 to the external monitor
 workspace 1 output HDMI-A-1
