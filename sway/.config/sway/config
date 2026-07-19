@@ -18,6 +18,9 @@ set $menu $rofi_cmd -show drun -show-icons
 # background
 output * bg /usr/share/backgrounds/default.jxl fill
 
+# scale for laptop, apps are way to small otherwise (similar to .Xresources)
+output eDP-1 scale 1.5
+
 # Set timeouts in seconds for clarity
 set $lock_timeout 3600        # 1 hour
 set $power_off_timeout 3605   # 1 hour and 5 seconds
