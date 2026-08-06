@@ -18,6 +18,6 @@ return {
 
 		keymap.set("n", "<Leader>w<leader>w", ":Diary<CR>", { noremap = true, silent = true })
 		keymap.set("n", "<Leader>sp", ":e ~/wiki/scratchpad.md<CR>", { noremap = true, silent = true })
-		keymap.set("n", "<Leader>td", ":e ~/wiki/personal/todo.md<CR>", { noremap = true, silent = true })
+		keymap.set("n", "<Leader>td", ":e ~/wiki/todo.md<CR>", { noremap = true, silent = true })
 	end,
 }
