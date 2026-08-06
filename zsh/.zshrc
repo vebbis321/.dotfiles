@@ -42,3 +42,5 @@ alias uxplay='uxplay -p -vs autovideosink'
 
 # funcions / key key-bindings
 bindkey -s '^f' 'tmux-sessionizer^M'
+
+. "$HOME/.local/share/../bin/env"

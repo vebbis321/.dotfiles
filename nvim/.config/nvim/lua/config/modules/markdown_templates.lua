@@ -29,9 +29,9 @@ local seperation = "\n\n"
 local diary = function()
 	local date = os.date("%Y-%m-%d")
 	local header = "# " .. date
-	local course_1 = "## Physics:"
-	local course_2 = "## Math:"
-	local course_3 = "## Statistics:"
+	local course_1 = "## FYS1120 – Electromagnetism:"
+	local course_2 = "## MAT1120 - Linear algebra:"
+	local course_3 = "## AST2000 - Astrophysics:"
 	return header .. seperation .. course_1 .. seperation .. course_2 .. seperation .. course_3
 end
 
