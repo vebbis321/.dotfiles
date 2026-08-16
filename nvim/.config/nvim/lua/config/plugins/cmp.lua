@@ -36,7 +36,6 @@ return {
 
 		snippets = {
 			preset = "luasnip",
-			show_autosnippets = false,
 		},
 
 		sources = {
