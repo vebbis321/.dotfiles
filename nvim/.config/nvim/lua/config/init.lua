@@ -1,4 +1,4 @@
-require("config.remaps")
-require("config.autocommands")
 require("config.options")
+require("config.autocommands")
+require("config.keymaps")
 require("config.lazy")

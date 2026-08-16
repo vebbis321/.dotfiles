@@ -8,9 +8,6 @@ keymap.set("n", "<leader>jf", vim.cmd.Ex)
 -- jump to previous file
 keymap.set("n", "<C-b>", "<C-^>")
 
--- for :term
-keymap.set("t", "<esc><esc>", "<c-\\><c-n>")
-
 -- switching between buffers
 keymap.set("n", "<c-j>", "<c-w><c-j>")
 keymap.set("n", "<c-k>", "<c-w><c-k>")
@@ -81,12 +78,14 @@ keymap.set("n", "N", "Nzzzv")
 keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
--- find and replace all text
+-- find and replace all text in current file
 keymap.set("n", "<leader>cs", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- paste over
 keymap.set("x", "<leader>p", [["_dP]])
 
+-- tmux-sessionizer
+keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+
 -- nope
 keymap.set("n", "Q", "<nop>")
-keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
