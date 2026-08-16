@@ -38,7 +38,7 @@ opt.backspace = "indent,eol,start"
 
 -- appearance
 opt.termguicolors = true
--- opt.signcolumn = "yes"
+vim.opt.signcolumn = "yes:1"
 -- opt.colorcolumn = "100"
 -- opt.textwidth = 98
 opt.cursorline = true
