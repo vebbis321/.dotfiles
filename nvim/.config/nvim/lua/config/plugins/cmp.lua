@@ -56,6 +56,9 @@ return {
 	config = function(_, opts)
 		require("blink.cmp").setup(opts)
 
+		local ls = require("luasnip")
+		ls.filetype_extend("markdown", { "tex" })
+
 		require("luasnip.loaders.from_lua").lazy_load({
 			paths = vim.fn.stdpath("config") .. "/snippets",
 		})

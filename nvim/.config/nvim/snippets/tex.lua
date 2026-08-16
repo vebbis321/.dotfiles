@@ -314,15 +314,9 @@ return {
 		}
 	),
 
-	s(
-		"nab",
-		fmt("\\nabla", {
-			i(1),
-		}),
-		{
-			dscr = "Nabla",
-		}
-	),
+	s("nab", fmt("\\nabla", {}), {
+		dscr = "Nabla",
+	}),
 
 	s(
 		"abs",
