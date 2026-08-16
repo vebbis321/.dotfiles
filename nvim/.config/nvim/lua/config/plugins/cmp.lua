@@ -7,6 +7,9 @@ return {
 			"L3MON4D3/LuaSnip",
 			version = "v2.*",
 			build = "make install_jsregexp",
+			opts = {
+				enable_autosnippets = true,
+			},
 		},
 	},
 
@@ -33,6 +36,7 @@ return {
 
 		snippets = {
 			preset = "luasnip",
+			show_autosnippets = false,
 		},
 
 		sources = {
