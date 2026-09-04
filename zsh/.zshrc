@@ -38,8 +38,7 @@ source /usr/share/fzf/shell/key-bindings.zsh
 #alias
 alias nv='nvim'
 alias p='python3'
-alias uxplay ='uxplay -p -vs autovideosink &>/dev/null'
-
+alias cast_ipad='uxplay -p -vs autovideosink >/dev/null 2>&1'
 
 # funcions / key key-bindings
 bindkey -s '^f' 'tmux-sessionizer^M'
