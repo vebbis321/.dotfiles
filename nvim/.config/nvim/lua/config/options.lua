@@ -48,6 +48,10 @@ opt.scrolloff = 999
 opt.isfname:append("@-@")
 opt.updatetime = 50
 
+-- spell
+opt.spell = true
+opt.spelllang = "en_us"
+
 -- paste
 opt.clipboard = "unnamedplus"
 -- sync
