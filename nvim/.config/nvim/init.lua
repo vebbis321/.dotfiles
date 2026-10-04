@@ -8,10 +8,10 @@ vim.lsp.enable({
 })
 
 vim.lsp.config("texlab", {
-	on_attach = function(_, bufnr)
+	on_attach = function()
 		vim.diagnostic.config({
 			virtual_text = false,
-		}, { bufnr = bufnr })
+		})
 	end,
 })
 
