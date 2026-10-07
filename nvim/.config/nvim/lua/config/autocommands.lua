@@ -13,6 +13,15 @@ vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "VimResume", "CursorHol
 	command = "silent! checktime",
 })
 
+-- ahhh, latex
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "tex", "plaintex" },
+	callback = function()
+		vim.keymap.set("n", "j", "gj", { buffer = true })
+		vim.keymap.set("n", "k", "gk", { buffer = true })
+	end,
+})
+
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("user-lsp-config", { clear = true }),
 	callback = function(e)
